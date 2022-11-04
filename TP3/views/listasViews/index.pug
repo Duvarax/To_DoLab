@@ -1,0 +1,59 @@
+extends layout 
+
+block content 
+
+    if(borrado)
+        div.alert.alert-danger Lista borrada con exito
+    if(agregado)
+        div.alert.alert-success Lista agregada con exito
+    if(error)
+        div.alert.alert-danger Ocurrio un error en la aplicacion, se ha devuelto al inicio
+    if(archivado)
+        div.alert.alert-warning Lista Archivada con exito
+
+    h1.text-center TO-DO LIST 
+    
+    h3.text-center
+        a(href=`/lista/agregar`)
+            button Agregar Lista 
+    h5.text-center 
+        a(href=`/lista/archivos`)
+            button Consultar Archivadas
+
+    table.table.table-striped-columns 
+        tr
+            th id 
+            th Titulo 
+            th Fecha de creacion
+            th Fecha de resolucion 
+            th Estado
+            th Acceder
+            th Archivar
+        each lista in listas
+            if(lista.id != null) 
+                tr.indice 
+                    td= lista.id 
+                    td= lista.titulo 
+                    td= lista.fechaCreacion 
+                    
+                    if(lista.fechaResolucion == NULL)
+                        td Aun no finaliza
+                    else 
+                        td= lista.fechaResolucion
+
+                    if(lista.estado == -1)
+                        td Pendiente 
+                    else if(lista.estado == 0)
+                        td En Proceso 
+                    else 
+                        td Resuelta    
+                    td 
+                        a(href=`/lista/${lista.id}/tareas`)
+                            button <i class="fa-solid fa-door-open"></i>   
+                    if(lista.estado == 1)    
+                        td 
+                            form(method='POST' action=`/lista/archivar/${lista.id}?_method=PUT`)
+                                button <i class="fa-sharp fa-solid fa-folder-open"></i>
+                    else 
+                        td X
+

@@ -1,0 +1,57 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+th a{
+  color:black;
+  text-decoration: none;
+}
+
+h1{
+  color: rgb(51, 99, 201);
+  margin-bottom: 20px;
+}
+tr{
+  border: .5px solid black
+}
+
+i{
+  cursor: pointer;
+  font-size: 20px;
+}
+.indice:hover{
+  background-color: #00B7FF;
+}
+a{
+  color:rgb(51, 99, 201);
+}
+
+.ordenFechaC, .ordenFechaL, .ordenPrioridad{
+  cursor: pointer;
+}
+.ordenFechaC:hover, .ordenFechaL:hover, .ordenPrioridad:hover{
+  color:red;
+}
+
+
+button:hover{
+  color: blue;
+}
+
+label{
+  font-size:30px;
+  color: rgb(0, 111, 202);
+  margin-bottom: 20px;
+}
+
+.form-control{
+  width: 300px;
+}
+.agregarB{
+  font-size: 20px;
+}
+

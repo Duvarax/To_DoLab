@@ -1,0 +1,44 @@
+extends layout
+
+block content 
+
+    h1.text-center Formulario de edicion de la tarea: #{x.id} ----- Titulo: #{x.titulo}
+
+    div.container.d-flex.justify-content-center
+
+        form(action=`/tareas/editar/item/${x.id}?_method=PUT` method='POST').d-flex.flex-column
+            label(for='ListumId') Lista: 
+                select(name='ListumId', class='form-control')
+                    each lista in listas 
+                        if(lista.id == aux)
+                            option(value=`${lista.id}` selected) #{lista.titulo}
+                        else 
+                            option(value=`${lista.id}`) #{lista.titulo}
+            label(for='titulo') Titulo:
+                input(type='text', name='titulo', class='form-control', value=`${x.titulo}`)
+            label(for='descripcion') Descripcion:
+                input(type='text', name='descripcion', class='form-control' value=`${x.descripcion}`) 
+                
+            if(x.fechaLimite == NULL)
+                label(for='fechaL') Fecha Limite: #{x.fechaLimite}
+                    input(type='date', name='fechaL', class='form-control', value=`${x.fechaLimite}`)
+            else 
+                label(for='fechaL') Fecha Limite: #{x.fechaLimite}
+                    input(type='date', name='fechaL', class='form-control', placeholder=`${x.fechaLimite}`)
+
+
+            label(for='prioridad') Prioridad:
+                select(name='prioridad', class='form-control')
+                    option(value='-1') Baja
+                    option(value='0') Media
+                    option(value='1') Alta
+
+
+                    
+            label(for='estado') Estado:
+                select(name='estado', class='form-control')
+                    option(value='-1') Pendiente
+                    option(value='0') En Proceso
+                    option(value='1') Resuelta
+            
+            input(type="submit")

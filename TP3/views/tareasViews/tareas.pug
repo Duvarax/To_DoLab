@@ -1,0 +1,95 @@
+extends layout 
+
+
+
+block content 
+
+    if(borrado)
+        div.alert.alert-danger Borrado con exito
+    if(ordenado == 0)
+        div.alert.alert-primary Ordenadas las tareas por orden descendiente de fecha de creacion 
+    if(ordenado == 1)
+        div.alert.alert-primary Ordenadas las tareas por orden descendiente de fecha limite    
+    if(ordenado == 2)
+        div.alert.alert-primary Ordenadas las tareas por prioridad
+    if(agregado)
+        div.alert.alert-success Tarea agregada con exito
+    
+    h4
+        a(href=`/`)
+            button Volver
+    div.container.d-flex.justify-content-around
+        h3.text-start 
+            if(cantidad < 1)
+                form(method='POST' action=`/lista/borrar/${idl}?_method=DELETE` )
+                    input(type='submit', value='Borrar Lista')
+            else 
+                h3 No se puede borrar
+
+        h1.text-center Listado de tareas 
+           
+        h3.text-start 
+            a(href=`/tareas/item/agregar`)
+                button Agregar Tarea
+    table.table.table-striped-columns
+        tr 
+            th Titulo 
+            th Descripcion
+            th.ordenFechaC 
+                a(href='/tareas/orden/fechaC')
+                    button(type='submit') Fecha creacion
+            th fecha de resolucion 
+            th.ordenFechaL 
+                a(href='/tareas/orden/fechaL')
+                    button(type='submit') Fecha limite
+            th.ordenPrioridad 
+                a(href='/tareas/orden/prioridad')
+                    button(type='submit') Prioridad
+            th Estado 
+            th Editar
+            th Eliminar
+            
+        each tarea in tareas 
+            tr.indice 
+                td= tarea.titulo
+                td= tarea.descripcion
+                td= tarea.fechaCreacion
+
+                if(tarea.fechaResolucion == NULL)
+                    td Aun no finaliza
+                else 
+                    td= tarea.fechaResolucion
+                
+                if(tarea.fechaLimite == NULL)
+                    td No tiene fecha limite
+                else 
+                    td= tarea.fechaLimite
+
+                if(tarea.prioridad == -1)
+                    td Baja 
+                else if(tarea.prioridad == 0)
+                    td Media 
+                else 
+                    td Alta 
+
+                if(tarea.estado == -1)
+                    td Sin Resolver 
+                else if(tarea.estado == 0)
+                    td Resolviendo 
+                else 
+                    td Resuelta 
+
+                if(tarea.estado < 1)
+                    td 
+                        a(href=`/tareas/editar/${tarea.id}`)
+                            button(type='submit') Editar
+                else 
+                    td X
+                td 
+                    form(method='POST' action=`/tareas/borrar/${tarea.id}?_method=DELETE`) 
+                        button(type='submit') Borrar
+            
+                
+
+
+    

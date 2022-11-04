@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+    h1.text-center Agregar una lista 
+
+    div.container.d-flex.justify-content-center 
+
+        form(action='agregar/success' method='POST').d-flex.flex-column
+            label(for='titulo') Titulo:
+                input(name='titulo' class='form-control' placeholder='Ingrese titulo')
+            label(for='estado') Estado:
+                select(name='estado', class='form-control')
+                    option(value="-1") Pendiente 
+                    option(value='0') En Proceso 
+
+            input(type='submit' value='Agregar Lista')  
+
