@@ -1,0 +1,35 @@
+extends layout 
+
+block content 
+    a(href='/listas/')
+            button(class='volver') Volver
+    h1.text-center Asignar Tareas
+
+    div.container.d-flex.justify-content-center 
+
+        form(action='asignar' method='POST').d-flex.flex-column
+            label(for='usuario' class='form-control') Seleccione usuario a asignar
+                select(name='usuario' class='form-control')
+                    each usuario in usuarios 
+                        if(usuario.id == aux)
+                            option(value=`${usuario.id}` selected) #{usuario.nombre}
+                        else
+                            option(value=`${usuario.id}`) #{usuario.nombre}
+            label(for='titulo') Titulo:
+                input(name='titulo', type='text', class='form-control')
+            label(for='descripcion') Descripcion:
+                input(name='descripcion', type='text', class='form-control') 
+            label(for='fechaL') Fecha Limite:
+                input(name='fechaL', type='date', class='form-control')
+            label(for='prioridad') Prioridad:
+                select(name='prioridad', class='form-control')
+                    option(value='-1') Baja
+                    option(value='0') Media
+                    option(value='1') Alta
+            label(for='estado') Estado:
+                select(name='estado', class='form-control')
+                    option(value='-1') Pendiente
+                    option(value='0') En Proceso
+                    option(value='1') Resuelta
+            input(type="submit") 
+            

@@ -1,0 +1,47 @@
+body{
+    background-color: #E7ECEF;
+}
+.logout, button{
+    margin: 5px;
+    font-size: 25px;
+    border-color: #274C77;
+    background-color: #274C77;
+    transition: all .5s;
+    color: white;
+}
+.logout:hover, button:hover{
+    transform: scale(1.2,1.2);
+    background-color: #A3CEF1;
+    color: black;
+}
+table, tr, th, td{
+    margin-top: 15px;
+    border: 1px solid black;
+}
+h1{
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+.acceder{
+    font-size: 16px;
+}
+.opciones{
+    margin-bottom: 10px;
+}
+.indice{
+
+    transition: all .5;
+}
+.indice:hover{
+    background-color: #00B7FF;
+  }
+.no{
+    font-size: 16px;
+    margin: auto auto;
+}
+select, option{
+    background-color: #A3CEF1;
+}
+h5{
+    font-size: 10px;
+}

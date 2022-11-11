@@ -1,0 +1,23 @@
+body{
+    background-color: #E7ECEF;
+}
+.container{
+    margin-top: 100px;
+}
+button{
+    margin: 5px;
+    font-size: 15px;
+    border-color: #274C77;
+    background-color: #274C77;
+    transition: all .5s;
+    color: white;
+}
+button:hover{
+    transform: scale(1.2,1.2);
+    background-color: #A3CEF1;
+    color: black;
+}
+table, tr, th, td{
+    margin-top: 15px;
+    border: 1px solid black;
+}

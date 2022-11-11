@@ -1,0 +1,31 @@
+extends layout 
+
+block content
+
+    
+
+    if(error)
+        div.alert.alert-danger Error de autenticacion 
+
+    
+    .container.d-flex.justify-content-center.flex-column
+        h1.text-center Login 
+        a(href='/')
+            button(class='volver') Volver
+        .container.d-flex.justify-content-center
+            form(method='POST' action='/user/login').d-flex.flex-column
+                label(for='nombre') Nombre:
+                    input(name='nombre' class='form-control' placeholder='Ingrese su nombre de usuario')
+                label(for='password') Contraseña:
+                    input(name='password' class='form-control' placeholder='Ingrese su contraseña')
+                input(type='submit')
+        .container.d-flex.justify-content-center 
+            if(passwordInvalida)
+                .alert.alert-danger.loginerr.text-center.my-3  Contraseña incorrecta
+            if(usuarioInvalido)
+                .alert.alert-danger.loginerr.text-center.my-3  Usuario invalido
+            h3.text-center Autenticarse con google
+        .container.d-flex.justify-content-center
+            a(href='/auth/google')
+                img(src='https://cdn-icons-png.flaticon.com/512/2991/2991148.png')
+    

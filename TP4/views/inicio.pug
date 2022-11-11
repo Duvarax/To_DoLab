@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+    if(creado)
+        div.alert.alert-success.text-center Usuario creado
+    if(finalizada)
+        div.alert.alert-warning.text-center Sesion Finalizada
+    h1.text-center To-Do-List 
+    .container.d-flex.justify-content-around.inicio 
+        a(href='/user/signin')
+            button Registrarse 
+        a(href='/user/login')
+            button Iniciar Sesion 
+            

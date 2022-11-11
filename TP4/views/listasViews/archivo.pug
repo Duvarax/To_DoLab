@@ -1,0 +1,44 @@
+extends layout 
+
+block content
+    if(activado)
+        div.alert.alert-success Lista activada con exito 
+    .container.d-flex.justify-content-center.flex-column
+        h4
+            a(href=`/listas/`)
+                button Volver
+        h1.text-center Listas Archivadas 
+        
+        table.table.table-striped-columns 
+            tr
+                th id 
+                th Titulo 
+                th Fecha de creacion
+                th Fecha de resolucion 
+                th Estado
+                th Acceder
+                th Activar
+            each lista in listas
+                if(lista.id != null) 
+                    tr.indice 
+                        td= lista.id 
+                        td= lista.titulo 
+                        td= lista.fechaCreacion 
+                        
+                        if(lista.fechaResolucion == NULL)
+                            td Aun no finaliza
+                        else 
+                            td= lista.fechaResolucion
+
+                        if(lista.estado == -1)
+                            td Pendiente 
+                        else if(lista.estado == 0)
+                            td En Proceso 
+                        else 
+                            td Resuelta   
+                        td 
+                            a(href=`/listas/${lista.id}/tareas`)
+                                button <i class="fa-solid fa-door-open"></i>
+                        td 
+                            form(method='POST' action=`/listas/activar/${lista.id}?_method=PUT`)
+                                button <i class="fa-solid fa-box-open"></i>

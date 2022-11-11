@@ -1,0 +1,23 @@
+extends layout
+
+block scripts
+
+block content
+    
+    if(datosInvalidos)
+        div.alert.alert-danger Los campos deben ser rellenados correctamente
+    .container.d-flex.justify-content-center.flex-column
+        
+        h1.text-center Registrese Nuevo Usuario
+        a(href='/')
+            button(class='volver') Volver 
+        .container.d-flex.justify-content-center
+        
+            form(method= 'POST' action='/user/singin' name='formulario' id='formulario' onsubmit='return validar()').d-flex.flex-column
+                label(for='nombre' id="nombre") Nombre:
+                    input(name='nombre' class='form-control' placeholder='Ingrese su nombre de usuario')
+                label(for='password' id='password') Contraseña:
+                    input(name='password' class='form-control' placeholder='Ingrese su contraseña')
+                input(type='submit' class='btn-submit')
+            
+
